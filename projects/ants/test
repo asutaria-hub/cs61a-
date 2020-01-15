@@ -1,0 +1,12 @@
+from ants import *
+beehive, layout = Hive(AssaultPlan()), dry_layout
+dimensions = (1, 9)
+colony = AntColony(None, beehive, ant_types(), layout, dimensions)
+# Testing Scare
+scary = ScaryThrower()
+bee = Bee(3)
+colony.places["tunnel_0_0"].add_insect(scary)
+colony.places["tunnel_0_4"].add_insect(bee)
+scary.action(colony)
+bee.action(colony)
+bee.place.name # ScaryThrower should scare for two turns
